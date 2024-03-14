@@ -1,2 +1,3 @@
 pyrogram==2.0.106
 dropbox  # Or your chosen cloud storage library
+TgCrypto
