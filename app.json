@@ -1,0 +1,21 @@
+{
+  "name": "File_zipper_bot", 
+  "description": "A Telegram bot that helps users zip and upload files.",
+  "repository": "https://github.com/captainrex32/File_zipper_bot", 
+  "environment": {
+     "TELEGRAM_BOT_TOKEN": { "required": true },
+     "API_ID": { "required": true },
+     "API_HASH": { "required": true },
+     "DROPBOX_ACCESS_TOKEN": { "required": true } 
+      # ... other cloud storage related tokens, if applicable
+  },
+  "formation": {
+    "worker": { 
+      "quantity": 1,
+      "size": "basic" 
+    } 
+  },
+  "buildpacks": [ 
+    { "url": "heroku/python" } 
+  ]
+}
