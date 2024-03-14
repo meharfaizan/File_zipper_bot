@@ -3,12 +3,12 @@ import os
 
 # ... Cloud storage imports if necessary ...
 
-def get_files_from_user(update):
-    #  Implement Telegram file receiving logic here
+async def get_files_from_user(client, message):
+    #  Implement Pyrogram logic to download files 
     #  Return a list of file paths or file data
 
 def create_zip(file_paths):
-    # ... (Your zipping logic)
+    # ... (Your zipping logic remains similar)
 
-def upload_to_cloud(filename):
-    # ... (Your cloud upload logic) 
+async def upload_to_cloud(client, filename):
+    # ... Implement cloud upload logic potentially using message.reply_document 
