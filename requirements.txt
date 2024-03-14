@@ -1,0 +1,2 @@
+pyTelegramBotAPI
+dropbox  # Or your chosen cloud storage library
