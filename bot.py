@@ -25,8 +25,7 @@ async def zip_handler(client, message):
     if len(user_files) > 10:
         zip_filename = helpers.create_zip(user_files)
         await helpers.upload_to_cloud(client, zip_filename)  
-        os.remove(zip_filename) 
-    else:
+        os.remove(zip_filename) else:
         # Create zip directly and send ... (your logic here) 
 
 app.run()
