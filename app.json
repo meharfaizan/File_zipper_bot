@@ -7,7 +7,7 @@
      "API_ID": { "required": true },
      "API_HASH": { "required": true },
      "DROPBOX_ACCESS_TOKEN": { "required": true } 
-      # ... other cloud storage related tokens, if applicable
+      
   },
   "formation": {
     "worker": { 
