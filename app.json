@@ -3,10 +3,7 @@
   "description": "A Telegram bot that helps users zip and upload files.",
   "repository": "https://github.com/captainrex32/File_zipper_bot", 
   "env": {
-     "TELEGRAM_BOT_TOKEN": { "required": true },
-     "API_ID": { "required": true },
-     "API_HASH": { "required": true },
-     "DROPBOX_ACCESS_TOKEN": { "required": true } 
+     "TELEGRAM_BOT_TOKEN": { "required": true }
       
   },
   "formation": {
