@@ -2,12 +2,14 @@ import os
 import zipfile
 from pyrogram import Client
 
-# Replace with your Telegram Bot token
+# Your Telegram Bot Token, API ID, and API Hash
 BOT_TOKEN = "6753139402:AAEMGziHbzmBNAvUADraUHMudKS8j0Fmi5g"
+API_ID = 14082290  # Replace with your actual API ID
+API_HASH = "ef7c8ee7f5a019ccca3f28d441d3bc49"  # Replace with your actual API hash
 
-app = Client("file_zipper_bot", bot_token=BOT_TOKEN)
+app = Client("file_zipper_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
-async def handle_message(message):
+async def handle_message(client, message):
     if message.text.startswith("/zip"):
         # Extract list of files/directories from the message
         files_to_zip = await get_files_to_zip(message)
@@ -25,7 +27,6 @@ async def handle_message(message):
 async def get_files_to_zip(message):
     # Implement logic to get files/directories from the user's message
     # This could involve parsing arguments, prompting for additional info, etc.
-    # Replace this with your desired implementation
     return []  # Placeholder for actual list of files/directories
 
 async def create_zip(files_to_zip, chat_id):
@@ -37,5 +38,4 @@ async def create_zip(files_to_zip, chat_id):
             pass  # Replace with actual zip creation logic
 
 app.on_message(handle_message)
-
 app.run()
