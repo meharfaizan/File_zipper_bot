@@ -1,31 +1,41 @@
-from pyrogram import Client, filters 
-import helpers 
 import os
+import zipfile
+from pyrogram import Client
 
-# Retrieve credentials from environment variables
-api_id = os.environ['API_ID']
-api_hash = os.environ['API_HASH']
-# Note: You'll need a Telegram session name for Pyrogram
-session_name = "my_zip_bot"  # Customize this
+# Replace with your Telegram Bot token
+BOT_TOKEN = "6753139402:AAEMGziHbzmBNAvUADraUHMudKS8j0Fmi5g"
 
-app = Client( 
-    session_name,
-    api_id=api_id,
-    api_hash=api_hash
-)
+app = Client("file_zipper_bot", bot_token=BOT_TOKEN)
 
-@app.on_message(filters.command("start"))
-async def start_command(client, message):
-    await message.reply_text("I'm a zipper bot! Send me files, and I'll zip them for you. Use /zip to get started.")
+async def handle_message(message):
+    if message.text.startswith("/zip"):
+        # Extract list of files/directories from the message
+        files_to_zip = await get_files_to_zip(message)
+        if not files_to_zip:
+            await message.reply_text("No files or directories found to zip.")
+            return
 
-@app.on_message(filters.document) # Adapt filter for file types if needed
-async def zip_handler(client, message):
-    user_files = await helpers.get_files_from_user(client, message) 
+        try:
+            await create_zip(files_to_zip, message.chat.id)
+            await message.reply_document("archive.zip")
+            os.remove("archive.zip")  # Remove temporary zip file
+        except Exception as e:
+            await message.reply_text(f"Error creating zip: {str(e)}")
 
-    if len(user_files) > 10:
-        zip_filename = helpers.create_zip(user_files)
-        await helpers.upload_to_cloud(client, zip_filename)  
-        os.remove(zip_filename) else:
-        # Create zip directly and send ... (your logic here) 
+async def get_files_to_zip(message):
+    # Implement logic to get files/directories from the user's message
+    # This could involve parsing arguments, prompting for additional info, etc.
+    # Replace this with your desired implementation
+    return []  # Placeholder for actual list of files/directories
+
+async def create_zip(files_to_zip, chat_id):
+    zip_filename = "archive.zip"
+    with zipfile.ZipFile(zip_filename, "w") as zipf:
+        for file_or_dir in files_to_zip:
+            # Add files or directories to the zip archive
+            # You can use zipfile functions like zipf.write() or zipf.writestr()
+            pass  # Replace with actual zip creation logic
+
+app.on_message(handle_message)
 
 app.run()
