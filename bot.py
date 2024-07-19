@@ -3,9 +3,9 @@ import zipfile
 from pyrogram import Client
 
 # Your Telegram Bot Token, API ID, and API Hash
-BOT_TOKEN = "6753139402:AAEMGziHbzmBNAvUADraUHMudKS8j0Fmi5g"
-API_ID = 14082290  # Replace with your actual API ID
-API_HASH = "ef7c8ee7f5a019ccca3f28d441d3bc49"  # Replace with your actual API hash
+BOT_TOKEN = "5442493323:AAHqpxh9_jdSQozCNcHtAhLJR84vOlPAu4U"
+API_ID = 6534707  # Replace with your actual API ID
+API_HASH = "4bcc61d959a9f403b2f20149cbbe627a"  # Replace with your actual API hash
 
 app = Client("file_zipper_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
